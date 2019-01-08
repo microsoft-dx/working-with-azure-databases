@@ -12,23 +12,23 @@
 
         public virtual void RunDemo(Customer newCustomer)
         {
-            // What am I doing Here
+            // Printing all customers 
             ShowAllCustomers();
             System.Console.WriteLine("SELECTED EVERYTHING..." + System.Environment.NewLine);
 
-            // What am I doing Here
+            // Inserting a new customer to the database
             System.Console.WriteLine("Adding myself" + System.Environment.NewLine);
             ShowAllCustomers(newCustomer.CustomerID);
             InsertNewCustomer(newCustomer);
             System.Console.WriteLine("Added Myself..." + System.Environment.NewLine);
 
-            // What am I doing Here
+            // Updating values for a new customer
             ShowAllCustomers(newCustomer.CustomerID);
             System.Console.WriteLine("Updating myself..." + System.Environment.NewLine);
             UpdateCustomerName(newCustomer.CustomerID, newCustomer.LastName, newCustomer.FirstName);
             ShowAllCustomers(newCustomer.CustomerID);
 
-            // What am I doing Here
+            // Deleting an entry from the database
             System.Console.WriteLine("Erasing myself..." + System.Environment.NewLine);
             DeleteCustomer(newCustomer.CustomerID);
             ShowAllCustomers(newCustomer.CustomerID);
