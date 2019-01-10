@@ -14,9 +14,10 @@ namespace WorkingWithAzureDB
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    // Define the DB Model
     public partial class DBModel : DbContext
     {
+        // Constructor
         public DBModel()
             : base("name=DBModel")
         {
@@ -26,7 +27,8 @@ namespace WorkingWithAzureDB
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+        
+        // Define the arameters of the DB
         public virtual DbSet<BuildVersion> BuildVersions { get; set; }
         public virtual DbSet<ErrorLog> ErrorLogs { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
@@ -55,12 +57,14 @@ namespace WorkingWithAzureDB
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<ufnGetCustomerInformation_Result>("[DBModel].[ufnGetCustomerInformation](@CustomerID)", customerIDParameter);
         }
-    
+        
+        // Generate logging error
         public virtual int uspLogError(ObjectParameter errorLogID)
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspLogError", errorLogID);
         }
     
+        // Generate printing error
         public virtual int uspPrintError()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("uspPrintError");
