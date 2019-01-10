@@ -15,13 +15,14 @@ namespace WorkingWithAzureDB
     public partial class Address
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        // Constructor
         public Address()
         {
             this.CustomerAddresses = new HashSet<CustomerAddress>();
             this.SalesOrderHeaders = new HashSet<SalesOrderHeader>();
             this.SalesOrderHeaders1 = new HashSet<SalesOrderHeader>();
         }
-    
+        // Methods to get main information about the address reffered
         public int AddressID { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
@@ -33,6 +34,7 @@ namespace WorkingWithAzureDB
         public System.DateTime ModifiedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        // COllection Methods
         public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
