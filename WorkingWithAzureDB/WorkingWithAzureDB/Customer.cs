@@ -11,16 +11,18 @@ namespace WorkingWithAzureDB
 {
     using System;
     using System.Collections.Generic;
-    
+    // Define the Customer type for the DB 
     public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        // COnstructor of the type
         public Customer()
         {
             this.CustomerAddresses = new HashSet<CustomerAddress>();
             this.SalesOrderHeaders = new HashSet<SalesOrderHeader>();
         }
-    
+        
+        // Methods to get information about the customer
         public int CustomerID { get; set; }
         public bool NameStyle { get; set; }
         public string Title { get; set; }
@@ -38,6 +40,7 @@ namespace WorkingWithAzureDB
         public System.DateTime ModifiedDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        // Methods to set Address and Order
         public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
