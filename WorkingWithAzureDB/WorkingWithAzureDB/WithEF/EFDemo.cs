@@ -5,13 +5,14 @@ namespace WorkingWithAzureDB.WithEF
     public class EFDemo : IDemo
     {
         public override void ShowAllCustomers(int customerID = 0) {
-            // What could this be?
-            using (DBModel linkToDatabase =  new DBModel())
+            // Connecting to the database and closing the connection at the end of usage
+            using (DBModel linkToDatabase = new DBModel())
             {
                 foreach (Customer currentCustomer in 
                     linkToDatabase.Customers.Where(x => customerID == 0 || x.CustomerID == customerID))
                 {
-                    // Where did this come from?
+                    // Foreach customer call the Present function
+                    // and print the Title, LastName and FirstName
                     System.Console.WriteLine(currentCustomer.Present());
                 }
             }
@@ -23,7 +24,7 @@ namespace WorkingWithAzureDB.WithEF
             {
                 linkToDatabase.Customers.Add(givenCustomer);
 
-                // Why do we do this?
+                // After adding a customer, save the changes to database
                 linkToDatabase.SaveChanges();
             }
         }
@@ -36,7 +37,7 @@ namespace WorkingWithAzureDB.WithEF
                 Customer desiredCustomer =
                     linkToDatabase.Customers.FirstOrDefault(x => x.CustomerID == customerID);
 
-                // Why if?
+                // Try to save the customer only if it contains the correct data and it's not null
                 if (desiredCustomer != null)
                 {
                     desiredCustomer.FirstName = firstName;

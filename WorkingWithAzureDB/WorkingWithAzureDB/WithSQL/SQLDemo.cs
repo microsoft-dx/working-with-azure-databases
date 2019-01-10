@@ -12,7 +12,7 @@ namespace WorkingWithAzureDB.WithSQL
         {
             string selectCommand = "SELECT * FROM [SalesLT].[Customer] "
                 + (customerID == 0 ? ";" : $"WHERE CustomerID = {customerID};");
-            // What could this be?
+            // For each customer from the database print the Title, LastName and FirstName
             using (DataTable allCustomers = new DataTable())
             using (SqlConnection linkToDatabase = new SqlConnection(_settingsData.DBConnection))
             using (SqlDataAdapter tableFiller = new SqlDataAdapter(selectCommand, linkToDatabase))
@@ -28,11 +28,11 @@ namespace WorkingWithAzureDB.WithSQL
 
         public override void InsertNewCustomer(Customer givenCustomer)
         {
-            // What could this be?
+            // Create the connection to the Database
             using (SqlConnection linkToDatabase = new SqlConnection(_settingsData.DBConnection))
             using (SqlCommand insertCommand = new SqlCommand(
                 "INSERT INTO [SalesLT].[Customer](" +
-                //"CustomerID, " + // Can we do this?
+                //"CustomerID, " + // Can we do this? Depends.
                 "FirstName, LastName, Title, PasswordHash, PasswordSalt) " +
                 $"VALUES(" +
                 //$"{givenCustomer.CustomerID}, " + // Can we do this?
