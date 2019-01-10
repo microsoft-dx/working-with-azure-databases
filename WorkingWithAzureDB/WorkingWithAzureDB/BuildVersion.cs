@@ -14,6 +14,7 @@ namespace WorkingWithAzureDB
     
     public partial class BuildVersion
     {
+        // Get infomation about the version of the DB
         public byte SystemInformationID { get; set; }
         public string Database_Version { get; set; }
         public System.DateTime VersionDate { get; set; }
