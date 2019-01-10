@@ -11,9 +11,10 @@ namespace WorkingWithAzureDB
 {
     using System;
     using System.Collections.Generic;
-    
+    // Class to define an ErrorLog
     public partial class ErrorLog
     {
+        // Methods to get the parameters of the error
         public int ErrorLogID { get; set; }
         public System.DateTime ErrorTime { get; set; }
         public string UserName { get; set; }
