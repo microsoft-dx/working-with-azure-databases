@@ -5,6 +5,7 @@ namespace WorkingWithAzureDB
 {
     public static class ExtensionMethods
     {
+        // Title Present
         public static string Present(this Customer givenCustomer)
         {
             return (givenCustomer.Title ?? "The").Trim()
@@ -13,7 +14,8 @@ namespace WorkingWithAzureDB
                 + " "
                 + (givenCustomer.FirstName ?? "Person").Trim();
         }
-
+    
+        // Printing format for a customer main data
         public static string Present(this DataRow givenCustomer)
         {
             return (givenCustomer[2] != DBNull.Value ? givenCustomer["Title"] : "The")
