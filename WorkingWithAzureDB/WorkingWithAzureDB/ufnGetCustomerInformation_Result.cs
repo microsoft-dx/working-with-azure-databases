@@ -10,7 +10,7 @@
 namespace WorkingWithAzureDB
 {
     using System;
-    
+    // Get main information about the customer to work in DB   
     public partial class ufnGetCustomerInformation_Result
     {
         public int CustomerID { get; set; }
